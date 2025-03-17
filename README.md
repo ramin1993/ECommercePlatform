@@ -17,6 +17,8 @@ This repository serves as the foundation for an e-commerce platform split into m
 - **API Gateway**: Ocelot
 - **Tools**: Git, Docker (planned)
 - **Database**: Sql,PostgreSql
+- **Unit ,Xunit testing**: Moq,xUnit
+- **Logging**: Serilog,Seq
 
 ## Architectural Patterns
 - **Microservices**: Independent, loosely coupled services.
