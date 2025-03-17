@@ -1,0 +1,152 @@
+# services:
+#   rabbitmq:
+#     image: rabbitmq:3-management
+#     container_name: rabbitmq
+#     ports:
+#       - "5672:5672" 
+#       - "15672:15672" 
+#     environment:
+#       RABBITMQ_DEFAULT_USER: guest
+#       RABBITMQ_DEFAULT_PASS: guest
+#     healthcheck:
+#       test: ["CMD", "rabbitmqctl", "status"]
+#       interval: 30s
+#       timeout: 10s
+#       retries: 3
+
+#   apigateway:
+#     image: apigateway
+#     build:
+#       context: "C:/Users/User/Desktop/C# folder/ECommercePlatform/ApiGateway"
+#       dockerfile: "Dockerfile"
+#     ports:
+#       - "5000:80"
+#     depends_on:
+#       rabbitmq:
+#         condition: service_healthy
+#       userservice:
+#         condition: service_healthy
+#       productservice:
+#         condition: service_healthy
+#       orderservice:
+#         condition: service_healthy
+#       cardservice:
+#         condition: service_healthy
+#       paymentservice:
+#         condition: service_healthy
+#       notificationservice:
+#         condition: service_healthy
+#       eventbusservice:
+#         condition: service_healthy
+
+#   userservice:
+#     image: userservice
+#     build:
+#       context: "C:/Users/User/Desktop/C# folder/ECommercePlatform/UserService"
+#       dockerfile: "Dockerfile"  
+#     ports:
+#       - "5001:80"
+#     depends_on:
+#       rabbitmq:
+#         condition: service_healthy
+#     healthcheck:
+#       test: ["CMD", "curl", "-f", "http://localhost:80/health"]
+#       interval: 30s
+#       timeout: 10s
+#       retries: 3
+
+#   productservice:
+#     image: productservice
+#     build:
+#       context: "C:/Users/User/Desktop/C# folder/ECommercePlatform/ProductService"
+#       dockerfile: "Dockerfile"  
+#     ports:
+#       - "5002:80"
+#     depends_on:
+#       rabbitmq:
+#         condition: service_healthy
+#     healthcheck:
+#       test: ["CMD", "curl", "-f", "http://localhost:80/health"]
+#       interval: 30s
+#       timeout: 10s
+#       retries: 3
+
+#   orderservice:
+#     image: orderservice
+#     build:
+#       context: "C:/Users/User/Desktop/C# folder/ECommercePlatform/OrderService"
+#       dockerfile: "Dockerfile"  
+#     ports:
+#       - "5003:80"
+#     depends_on:
+#       rabbitmq:
+#         condition: service_healthy
+#     healthcheck:
+#       test: ["CMD", "curl", "-f", "http://localhost:80/health"]
+#       interval: 30s
+#       timeout: 10s
+#       retries: 3
+
+#   cardservice:
+#     image: cardservice
+#     build:
+#       context: "C:/Users/User/Desktop/C# folder/ECommercePlatform/CartService"
+#       dockerfile: "Dockerfile" 
+#     ports:
+#       - "5004:80"
+#     depends_on:
+#       rabbitmq:
+#         condition: service_healthy
+#     healthcheck:
+#       test: ["CMD", "curl", "-f", "http://localhost:80/health"]
+#       interval: 30s
+#       timeout: 10s
+#       retries: 3
+
+#   paymentservice:
+#     image: paymentservice
+#     build:
+#       context: "C:/Users/User/Desktop/C# folder/ECommercePlatform/PaymentService"
+#       dockerfile: "Dockerfile"  
+#     ports:
+#       - "5005:80"
+#     depends_on:
+#       rabbitmq:
+#         condition: service_healthy
+#     healthcheck:
+#       test: ["CMD", "curl", "-f", "http://localhost:80/health"]
+#       interval: 30s
+#       timeout: 10s
+#       retries: 3
+
+#   notificationservice:
+#     image: notificationservice
+#     build:
+#       context: "C:/Users/User/Desktop/C# folder/ECommercePlatform/NotificationService"
+#       dockerfile: "Dockerfile" 
+#     ports:
+#       - "5006:80"
+#     depends_on:
+#       rabbitmq:
+#         condition: service_healthy
+#     healthcheck:
+#       test: ["CMD", "curl", "-f", "http://localhost:80/health"]
+#       interval: 30s
+#       timeout: 10s
+#       retries: 3
+
+#   eventbusservice:
+#     image: eventbusservice
+#     build:
+#       context: "C:/Users/User/Desktop/C# folder/ECommercePlatform/EventBusSerivce"
+#       dockerfile: "dockerfile"  
+#     ports:
+#       - "5007:80"
+#     depends_on:
+#       rabbitmq:
+#         condition: service_healthy
+#     healthcheck:
+#       test: ["CMD", "curl", "-f", "http://localhost:80/health"]
+#       interval: 30s
+#       timeout: 10s
+#       retries: 3

@@ -1,0 +1,13 @@
+﻿using ProductService.Services.Entities;
+
+namespace ProductService.Infrastructure.Repositories.Interfaces
+{
+    public interface IProductRepository
+    {
+        Task<IEnumerable<Product>> GetAllAsync();
+        Task<Product> GetByIdAsync(int id);
+        Task AddAsync(Product product);
+        Task UpdateAsync(Product product);
+        Task DeleteAsync(int id);
+    }
+}
